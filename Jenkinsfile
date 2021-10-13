@@ -9,16 +9,16 @@ node {
             checkout scm
         }
 
-        stage('Build_App') {
-            sh 'mvn package'
-        }        
+        // stage('Build_App') {
+        //     sh 'mvn package'
+        // }        
             
         stage("Build-image") {
             docker.build("$imageProject" , ".")
         }
 
         stage("Run-image") {
-            docker.image("$imageProject").withRun("--name image-$BUILD_ID -p 9090:90") {
+            docker.image("$imageProject").withRun("--name image-$BUILD_ID -p 9090:9999") {
                 c -> 
                 sh 'docker ps -a'
                 echo 'run success'
@@ -95,11 +95,11 @@ node {
        echo "Push success"
             
     }
-    stage("Create Backup <Dockerhub>")  {
-      sh 'docker login -u abdoulfatah123 -p malyoun123'
-      sh "docker tag $imageProject abdoulfatah123/drfanel:backup-$BUILD_ID"  
-      sh "docker push abdoulfatah123/drfanel:backup-$BUILD_ID"
-    }
+    // stage("Create Backup <Dockerhub>")  {
+    //   sh 'docker login -u abdoulfatah123 -p malyoun123'
+    //   sh "docker tag $imageProject abdoulfatah123/drfanel:backup-$BUILD_ID"  
+    //   sh "docker push abdoulfatah123/drfanel:backup-$BUILD_ID"
+    // }
     
     // stage("Remove-image") {
     //     sh "docker image rm -f $imageProject abdoulfatah123/drfanel:backup-$BUILD_ID"
