@@ -1,0 +1,3 @@
+com\nethealth\restController\LoginRestControllerTest.class
+com\nethealth\restController\DoctorRestControllerTest.class
+com\nethealth\restController\PatientRestControllerTest.class
