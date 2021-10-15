@@ -1,5 +1,7 @@
 node { 
 
+    // registry.gitlab.com/abdoulfatah12/mugen-project:version-1
+
         // On definie nos variable d'environnement 
         def registeryProject = "registry.gitlab.com/abdoulfatah12/mugen-project"
         def imageProject = "${registeryProject}:version-${env.BUILD_ID}"
